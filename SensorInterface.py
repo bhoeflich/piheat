@@ -7,7 +7,6 @@ class SensorInterface:
         self.paths = CON.SENSOR_PATHS
         self.factor = CON.TEMP_FACTOR
         self.raw_string = self.get_content()
-        self.temp_container = self.get_temperatures()
 
     def get_content(self):
         raw_string = []
@@ -19,12 +18,13 @@ class SensorInterface:
         return raw_string
 
     def get_temperatures(self):
-        temp_container =
+        temp_lst = []
 
-        for string in self.raw_string:
+        for string in  self.raw_string:
+            temp_str = string.split('\n')[1].split(' ')[9]
+            temp = float(temp_str[2:])
+            temp_lst.append(temp)
+
+        return temp_lst
 
 
-        pass
-
-intef_test = SensorInterface()
-print(intef_test.raw_string)
