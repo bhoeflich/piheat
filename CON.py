@@ -2,10 +2,11 @@ import os
 # SYSTEM CONSTANTS
 
 # Path of Sensor Data
-
-SENSOR_PATHS = (os.path.abspath('/test_files/w1_slave.txt'), os.path.abspath('/test_files/w2_slave.txt'),
-                os.path.abspath('/test_files/w3_slave.txt')
+SENSOR_PATHS = ('/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w1_slave.txt',
+                '/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w2_slave.txt',
+                '/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w3_slave.txt'
                 )
+
 
 
 # ControlMea

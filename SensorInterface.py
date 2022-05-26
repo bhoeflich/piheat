@@ -1,5 +1,6 @@
 import CON
 
+# interface between sensors connected to pi and ControlMea
 
 class SensorInterface:
 
