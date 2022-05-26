@@ -22,10 +22,7 @@ class SensorInterface:
 
         for string in  self.raw_string:
             temp_str = string.split('\n')[1].split(' ')[9]
-            temp = float(temp_str[2:])
+            temp = float(temp_str[2:])/1000
             temp_lst.append(temp)
 
         return temp_lst
-
-
-test_obj = SensorInterface()
