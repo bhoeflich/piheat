@@ -28,3 +28,4 @@ class SensorInterface:
         return temp_lst
 
 
+test_obj = SensorInterface()
