@@ -18,7 +18,7 @@ class ControlMea:
         # return temp_lst
 
     def check_temp(self, temp_lst):
-        crit_temp = 0
+        crit_temp = 50
         crit_sensor = None
         crit_bool = False
 
