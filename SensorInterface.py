@@ -1,4 +1,4 @@
-import CON
+import constants
 
 # interface between sensors connected to pi and ControlMea
 
