@@ -1,6 +1,7 @@
 import constants as CON
 import smtplib
 import re
+import datetime as dt
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -12,11 +13,9 @@ class Notify:
         self.sender_password = CON.PASSWORD
         self.smtp_server = CON.SMTP_SERVER
         self.smtp_port = CON.SMTP_PORT
-        self.report_subject = CON.REPORT_SUBJECT
-        self.report_body = CON.REPORT_HTML
-        self.warning_subject = CON.WARNING_SUBJECT
-        self.warning_body = CON.WARNING_HTML
-        self.email_recipients = {'Maximilian Gröning': 'maximilian.groening@haw-hamburg.de',
+        self.report_subject = 'Temperature Report {}'.format(dt.datetime.now().replace(microsecond=0))
+        self.warning_subject = 'WARNING! Temperature Alert {}'.format(dt.datetime.now().replace(microsecond=0))
+        self.email_recipients = {'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de'}
 
     def update_contacts(self):
@@ -42,13 +41,17 @@ class Notify:
         server.starttls()
         server.login(self.sender_username, self.sender_password)
         # For loop, sending emails to all email recipients
-        for recipient in self.email_recipients:
+        for name, recipient in enumerate(self.email_recipients):
             print(f"Sending email to {recipient}")
             message = MIMEMultipart('alternative')
             message['From'] = self.sender_account
             message['To'] = recipient
             message['Subject'] = self.report_subject
-            message.attach(MIMEText(self.report_body, 'html'))
+            message.attach(MIMEText(
+                '<p>Hallo {},</p>' \
+                '<p>hier ist der monatliche Bericht deines PiHeat.</p>' \
+                '<p>Sch&ouml;nen Tag (:</p>'.format(name)
+                , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, recipient, text)
         # All emails sent, log out.
@@ -60,13 +63,17 @@ class Notify:
         server.starttls()
         server.login(self.sender_username, self.sender_password)
         # For loop, sending emails to all email recipients
-        for recipient in self.email_recipients:
+        for name, recipient in enumerate(self.email_recipients):
             print(f"Sending email to {recipient}")
             message = MIMEMultipart('alternative')
             message['From'] = self.sender_account
             message['To'] = recipient
             message['Subject'] = self.warning_subject
-            message.attach(MIMEText(self.warning_body, 'html'))
+            message.attach(MIMEText(
+                '<p>Hallo {},</p>' \
+                '<p>hier ist der monatliche Bericht deines PiHeat.</p>' \
+                '<p>Sch&ouml;nen Tag (:</p>'.format(name)
+                , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, recipient, text)
         # All emails sent, log out.
