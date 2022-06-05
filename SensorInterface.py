@@ -1,4 +1,4 @@
-import constants
+import constants as CON
 
 # interface between sensors connected to pi and ControlMea
 
@@ -7,7 +7,7 @@ class SensorInterface:
     def __init__(self):
         self.paths = CON.SENSOR_PATHS
         self.factor = CON.TEMP_FACTOR
-        self.raw_string = self.get_content()
+
 
     def get_content(self):
         raw_string = []
@@ -21,7 +21,7 @@ class SensorInterface:
     def get_temperatures(self):
         temp_lst = []
 
-        for string in  self.raw_string:
+        for string in  self.get_content():
             temp_str = string.split('\n')[1].split(' ')[9]
             temp = float(temp_str[2:])/1000
             temp_lst.append(temp)

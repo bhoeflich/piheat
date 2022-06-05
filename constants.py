@@ -12,6 +12,7 @@ SENSOR_PATHS = ('/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w1_slave.txt'
 
 
 
+
 # ControlMea
 INTERVAL = 10                   # measuring interval in seconds
 SENSORS = len(SENSOR_PATHS)     # amount of sensors used
