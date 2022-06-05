@@ -16,7 +16,7 @@ data_controller.initialize_csv()
 start_day = dt.date.today()
 
 while measure_process:
-    time.sleep(5)
+    time.sleep(measure_controller.interval)
 
     temp_lst = measure_controller.get_temp()
     crit_sensors_data = measure_controller.check_temp(temp_lst)
@@ -31,7 +31,7 @@ while measure_process:
         pass
 
     actual_day = dt.date.today()
-    if actual_day - start_day >= dt.timedelta(days=7):
+    if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
         # Notify.send_report()
         start_day = actual_day
         pass
