@@ -12,7 +12,6 @@ class ControlMea:
 
         self.interface = SensorInterface()
 
-
     def __str__(self):
         return f'[interv:{self.interval}\namt senors:{self.sensors}\nmax temp:{self.max_temp}' \
                f'\nreport interv:{self.report_interval}]'
@@ -34,13 +33,11 @@ class ControlMea:
 
         return crit_bool, crit_sensor, crit_temp
 
-    def warning_temp(self):
+    def warn_temp(self):
         pass
 
     def report_temp(self):
         pass
 
-    def set_datapoint(self):
-        pass
 
 

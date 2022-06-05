@@ -2,6 +2,11 @@ import csv
 import pandas as pd
 import datetime as dt
 
+# controles the data management
+# To Do
+# - header has to be parametric depending on CON.SENSORS
+# - set datapoint has to be parametric depending on CON.SENSORS
+
 
 class ControlData:
 

@@ -3,17 +3,14 @@ import datetime as dt
 
 from ControlMea import ControlMea
 from ControlData import ControlData
-from Notify import Notify
-
 
 measure_process = True
+start_day = dt.date.today()
 
 measure_controller = ControlMea()
 
 data_controller = ControlData()
 data_controller.initialize_csv()
-
-start_day = dt.date.today()
 
 while measure_process:
     time.sleep(measure_controller.interval)
@@ -25,14 +22,16 @@ while measure_process:
 
     data_controller.set_datapoint(temp_lst)
 
+    # temp control structure
     if crit_sensors_data:
-        # Notify.send_warning()
+        # measure_controller.warn_temp()
         measure_process = False
         pass
 
     actual_day = dt.date.today()
+
     if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
-        # Notify.send_report()
+        # measure_controller.report_temp()
         start_day = actual_day
         pass
 
