@@ -20,8 +20,12 @@ REP_INTERVAL = 3                # report interval in days
 TEMP_FACTOR = 1000              # factor as divisor to get the right temperatures
 
 # Notify
-EMAIL = 'piheat.alert@gmx.de'
+EMAIL = 'piheat.alert@hotmail.com'
 PASSWORD = 'PiHeat!2Hot'
 SMTP_SERVER = 'smtp.office365.com'
 SMTP_PORT = '587'
+
+# Servername: smtp.office365.com
+# Port: 587
+# Verschlüsselungsmethode: STARTTLS
 
