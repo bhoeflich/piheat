@@ -15,7 +15,8 @@ class Notify:
         self.smtp_port = CON.SMTP_PORT
         self.report_subject = 'Temperature Report {}'.format(dt.datetime.now().replace(microsecond=0))
         self.warning_subject = 'WARNING! Temperature Alert {}'.format(dt.datetime.now().replace(microsecond=0))
-        self.email_recipients = {'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
+        self.email_recipients = {'Julian Katz': 'julian.katz@haw-hamburg.de',
+                                 'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de'}
 
     def update_contacts(self):
@@ -41,11 +42,11 @@ class Notify:
         server.starttls()
         server.login(self.sender_username, self.sender_password)
         # For loop, sending emails to all email recipients
-        for name, recipient in enumerate(self.email_recipients):
-            print(f"Sending email to {recipient}")
+        for name in self.email_recipients:
+            print(f"Sending email to {name}")
             message = MIMEMultipart('alternative')
             message['From'] = self.sender_account
-            message['To'] = recipient
+            message['To'] = self.email_recipients[name]
             message['Subject'] = self.report_subject
             message.attach(MIMEText(
                 '<p>Hallo {},</p>' \
@@ -53,28 +54,39 @@ class Notify:
                 '<p>Sch&ouml;nen Tag (:</p>'.format(name)
                 , 'html'))
             text = message.as_string()
-            server.sendmail(self.sender_account, recipient, text)
+            server.sendmail(self.sender_account, self.email_recipients[name], text)
         # All emails sent, log out.
         server.quit()
 
-    def send_warning(self):
+    def send_warning(self, current_temp):
         # login to email server
         server = smtplib.SMTP(self.smtp_server, self.smtp_port)
         server.starttls()
         server.login(self.sender_username, self.sender_password)
         # For loop, sending emails to all email recipients
-        for name, recipient in enumerate(self.email_recipients):
-            print(f"Sending email to {recipient}")
+        for name in self.email_recipients:
+            print(f"Sending email to {name}")
             message = MIMEMultipart('alternative')
             message['From'] = self.sender_account
-            message['To'] = recipient
+            message['To'] = self.email_recipients[name]
             message['Subject'] = self.warning_subject
             message.attach(MIMEText(
-                '<p>Hallo {},</p>' \
-                '<p>hier ist der monatliche Bericht deines PiHeat.</p>' \
-                '<p>Sch&ouml;nen Tag (:</p>'.format(name)
+                '<p><b>!!! WARNUNG !!!</b></p>'\
+                '<p>Hallo {},</p>'\
+                '<p></p>'\
+                '<p><strong>deine Kacke ist grade so richtig am dampfen!</strong></p>'\
+                '<p>Wir haben eine zu hohe Temperatur ({} C°) festgestellt</p>'\
+                '<p></p>'\
+                '<p>Bitte überprüfe <b>sofort</b> deinen Stuhl</p>'\
+                '<p></p>'\
+                '<p>Sch&ouml;nen Tag (:</p>'.format(name, current_temp)
                 , 'html'))
             text = message.as_string()
-            server.sendmail(self.sender_account, recipient, text)
+            server.sendmail(self.sender_account, self.email_recipients[name], text)
         # All emails sent, log out.
         server.quit()
+
+fake_temp = '9001'
+N = Notify()
+N.send_warning(fake_temp)
+N.send_report()
