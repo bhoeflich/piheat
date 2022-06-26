@@ -22,7 +22,7 @@ class ControlData:
         self.csv_path = self.__filepath + 'temp-data-' + str(dt.datetime.now()) + '.csv'
 
         self.plot_path = 'plots/report_plot-' + str(dt.date.today()) + '.png'
-        self.html_plot_path = '/' + 'plots/report_plot-' + str(dt.date.today()) + '.png'
+        self.html_plot_path = '../' + 'plots/report_plot-' + str(dt.date.today()) + '.png'
 
     def new_file(self):
         self.csv_path = self.__filepath + 'temp-data-' + str(dt.datetime.now()) + '.csv'
