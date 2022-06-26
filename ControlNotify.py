@@ -16,8 +16,8 @@ class ControlNotify:
         self.smtp_port = CON.SMTP_PORT
         self.report_subject = 'Temperature Report {}'.format(dt.datetime.now().replace(microsecond=0))
         self.warning_subject = 'WARNING! Temperature Alert {}'.format(dt.datetime.now().replace(microsecond=0))
-        self.email_recipients = {'Lennard Rüdiger Voigt': 'lennardvoigt@hotmail.de',
-                                 'Julian Katz': 'julian.katz@haw-hamburg.de',
+        self.email_recipients = {#'Lennard Rüdiger Voigt': 'lennardvoigt@hotmail.de',
+                                 #'Julian Katz': 'julian.katz@haw-hamburg.de',
                                  'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de',
                                  }

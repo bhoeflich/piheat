@@ -32,6 +32,7 @@ while measure_process:
     if actual_day - start_day >= dt.timedelta(seconds=measure_controller.report_interval):
 
         plot_path = data_controller.create_plot(measure_controller.max_temp)
+        print(plot_path)
         measure_controller.report_temp(plot_path)
 
         start_day = actual_day
