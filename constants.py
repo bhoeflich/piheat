@@ -11,10 +11,10 @@ SENSOR_PATHS = ('/sys/bus/w1/devices/28-1de3851e64ff/w1_slave',
                 )
 
 # ControlMea
-INTERVAL = 5                   # measuring interval in seconds
+INTERVAL = 5                    # measuring interval in seconds
 SENSORS = len(SENSOR_PATHS)     # amount of sensors used
 MAX_TEMP = 80                   # maximum temp in degree celsius
-REP_INTERVAL =  120               # report interval in days
+REP_INTERVAL = 120              # report interval in days
 
 # SensorInterface
 TEMP_FACTOR = 1000              # factor as divisor to get the right temperatures
