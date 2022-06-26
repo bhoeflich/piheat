@@ -21,7 +21,7 @@ class SensorInterface:
     def get_temperatures(self):
         temp_lst = []
 
-        for string in  self.get_content():
+        for string in self.get_content():
             temp_str = string.split('\n')[1].split(' ')[9]
             temp = float(temp_str[2:])/1000
             temp_lst.append(temp)

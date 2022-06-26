@@ -30,7 +30,7 @@ while measure_process:
 
     actual_day = dt.date.today()
 
-    if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
+    if actual_day - start_day >= dt.timedelta(day=measure_controller.report_interval):
         # measure_controller.report_temp()
         start_day = actual_day
         pass

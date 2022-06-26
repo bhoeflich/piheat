@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-class Notify:
+class ControlNotify:
     def __init__(self):
         self.sender_account = CON.EMAIL
         self.sender_username = CON.EMAIL

@@ -1,5 +1,7 @@
 import constants as CON
 from SensorInterface import SensorInterface
+from ControlNotify import ControlNotify
+
 
 
 class ControlMea:
@@ -11,6 +13,7 @@ class ControlMea:
         self.report_interval = CON.REP_INTERVAL
 
         self.interface = SensorInterface()
+        self. notifier = ControlNotify()
 
     def __str__(self):
         return f'[interv:{self.interval}\namt senors:{self.sensors}\nmax temp:{self.max_temp}' \
