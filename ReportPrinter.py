@@ -2,6 +2,7 @@ import pandas as pd
 
 # Report printer makes a temp chart with len of report interval as png for mail Report
 
+
 class ReportPrinter:
     def __init__(self, current_file, report_interval, interval):
         self.path = current_file
