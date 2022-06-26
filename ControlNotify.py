@@ -5,6 +5,8 @@ import datetime as dt
 import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
 
 
 class ControlNotify:
@@ -47,18 +49,25 @@ class ControlNotify:
         # For loop, sending emails to all email recipients
         for name in self.email_recipients:
             print(f"Sending email to {name}")
-            message = MIMEMultipart('alternative')
-            message['From'] = self.sender_account
-            message['To'] = self.email_recipients[name]
-            message['Subject'] = self.report_subject
-            message.attach(MIMEText(
+            message_root = MIMEMultipart('alternative')
+            message_root['From'] = self.sender_account
+            message_root['To'] = self.email_recipients[name]
+            message_root['Subject'] = self.report_subject
+            message_root.attach(MIMEText(
                 '<p>Hallo {},</p>'
                 '<p>hier ist der monatliche Bericht deines PiHeat.</p>'
-                '<img src="{}" alt="Plot" width="1500" height="1500">'
-                '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name, plot_path)
+                '<img src="cid:image1" alt="Plot" width="1500" height="1500">'
+                '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name)
                 , 'html'))
-            text = message.as_string()
-            server.sendmail(self.sender_account, self.email_recipients[name], text)
+            # Attach Image
+            fp = open(plot_path, 'rb')  # Read image
+            msg_image = MIMEImage(fp.read())
+            fp.close()
+            # Define the image's ID as referenced above
+            msg_image.add_header('Content-ID', '<image1>')
+            message_root.attach(msg_image)
+
+            server.sendmail(self.sender_account, self.email_recipients[name], message_root.as_string())
         # All emails sent, log out.
         server.quit()
 
