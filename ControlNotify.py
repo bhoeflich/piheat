@@ -37,7 +37,7 @@ class ControlNotify:
                 continue
         self.email_recipients = checked_contacts
 
-    def send_report(self):
+    def send_report(self, plot_path):
         # login to email server
         server = smtplib.SMTP(self.smtp_server, self.smtp_port)
         server.starttls()
@@ -50,16 +50,17 @@ class ControlNotify:
             message['To'] = self.email_recipients[name]
             message['Subject'] = self.report_subject
             message.attach(MIMEText(
-                '<p>Hallo {},</p>' \
-                '<p>hier ist der monatliche Bericht deines PiHeat.</p>' \
-                '<p>Sch&ouml;nen Tag (:</p>'.format(name)
+                '<p>Hallo {},</p>'
+                '<p>hier ist der monatliche Bericht deines PiHeat.</p>'
+                '<img src="{}" alt="Trulli" width="500" height="333">'
+                '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name, plot_path)
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)
         # All emails sent, log out.
         server.quit()
 
-    def send_warning(self, current_temp):
+    def send_warning(self, critical_temp):
         # login to email server
         server = smtplib.SMTP(self.smtp_server, self.smtp_port)
         server.starttls()
@@ -80,7 +81,7 @@ class ControlNotify:
                 '<p></p>'\
                 '<p>Bitte überprüfe <b>sofort</b> deinen Stuhl</p>'\
                 '<p></p>'\
-                '<p>Sch&ouml;nen Tag (:</p>'.format(name, current_temp)
+                '<p>Sch&ouml;nen Tag (:</p>'.format(name, critical_temp)
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)

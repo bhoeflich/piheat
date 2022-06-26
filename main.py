@@ -14,8 +14,6 @@ data_controller = ControlData()
 data_controller.initialize_csv()
 
 while measure_process:
-    time.sleep(measure_controller.interval)
-
     temp_lst = measure_controller.get_temp()
     crit_sensors_data = measure_controller.check_temp(temp_lst)
     print(temp_lst)
@@ -25,18 +23,19 @@ while measure_process:
 
     # temp control structure
     if crit_sensors_data:
-        measure_controller.warn_temp()
+        measure_controller.warn_temp(crit_sensors_data[3])
         measure_process = False
         pass
 
     actual_day = dt.date.today()
 
     if actual_day - start_day >= dt.timedelta(day=measure_controller.report_interval):
-        measure_controller.report_temp()
+        plot_path = data_controller.create_plot()
+        measure_controller.report_temp(plot_path)
         start_day = actual_day
         pass
 
-
+    time.sleep(measure_controller.interval)
 
 
 

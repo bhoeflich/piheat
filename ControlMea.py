@@ -16,8 +16,10 @@ class ControlMea:
         self.notifier = ControlNotify()
 
     def __str__(self):
-        return f'[interv:{self.interval}\namt senors:{self.sensors}\nmax temp:{self.max_temp}' \
-               f'\nreport interv:{self.report_interval}]'
+        return f'[interv:{self.interval}\n ' \
+               f'amt senors:{self.sensors}\n ' \
+               f'max temp:{self.max_temp}\n ' \
+               f'report interv:{self.report_interval}]'
 
     def get_temp(self) -> list:
         return self.interface.get_temperatures()
@@ -36,11 +38,11 @@ class ControlMea:
 
         return crit_bool, crit_sensor, crit_temp
 
-    def warn_temp(self):
-        pass
+    def warn_temp(self, critical_temp):
+        self.notifier.send_warning(critical_temp)
 
-    def report_temp(self):
-        pass
+    def report_temp(self, plot_path='/plots/ups.png'):
+        self.notifier.send_report(plot_path)
 
 
 
