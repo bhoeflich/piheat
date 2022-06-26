@@ -26,6 +26,7 @@ while measure_process:
         measure_controller.warn_temp(crit_sensors_data[2])
         measure_process = False
 
+
     actual_day = dt.date.today()
 
     if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
