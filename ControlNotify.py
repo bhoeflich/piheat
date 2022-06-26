@@ -91,6 +91,3 @@ class ControlNotify:
             time.sleep(5)
         # All emails sent, log out.
         server.quit()
-
-n = ControlNotify()
-n.send_warning(9001)
