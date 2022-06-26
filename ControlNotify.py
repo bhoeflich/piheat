@@ -5,8 +5,8 @@ import datetime as dt
 import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
-
+from email.mime.base import MIMEBase
+from email import encoders
 
 
 class ControlNotify:
@@ -59,12 +59,9 @@ class ControlNotify:
                 '<img src="cid:image1" alt="Plot" width="1500" height="1500">'
                 '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name)
                 , 'html'))
-            # Attach Image
-            fp = open(plot_path, 'rb')  # Read image
-            msg_image = MIMEImage(fp.read())
-            fp.close()
-            # Define the image's ID as referenced above
-            msg_image.add_header('Content-ID', '<image1>')
+            msg_image = MIMEBase('application', "octet-stream")
+            msg_image.set_payload(open(plot_path, "rb").read())
+            encoders.encode_base64(msg_image)
             message_root.attach(msg_image)
             server.sendmail(self.sender_account, self.email_recipients[name], message_root.as_string())
         # All emails sent, log out.
