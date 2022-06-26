@@ -66,7 +66,6 @@ class ControlNotify:
             # Define the image's ID as referenced above
             msg_image.add_header('Content-ID', '<image1>')
             message_root.attach(msg_image)
-
             server.sendmail(self.sender_account, self.email_recipients[name], message_root.as_string())
         # All emails sent, log out.
         server.quit()
