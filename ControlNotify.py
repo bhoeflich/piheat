@@ -59,7 +59,6 @@ class ControlNotify:
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)
-            time.sleep(5)
         # All emails sent, log out.
         server.quit()
 
@@ -88,6 +87,5 @@ class ControlNotify:
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)
-            time.sleep(5)
         # All emails sent, log out.
         server.quit()
