@@ -30,9 +30,13 @@ while measure_process:
     actual_day = dt.date.today()
 
     if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
-        measure_controller.report_temp(data_controller.create_plot())
+
+        plot_path = data_controller.create_plot(measure_controller.max_temp)
+        measure_controller.report_temp(plot_path)
+
         start_day = actual_day
-        pass
+        data_controller.new_file()
+        data_controller.initialize_csv()
 
     time.sleep(measure_controller.interval)
 
