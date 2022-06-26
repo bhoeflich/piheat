@@ -52,7 +52,7 @@ class ControlNotify:
             message.attach(MIMEText(
                 '<p>Hallo {},</p>'
                 '<p>hier ist der monatliche Bericht deines PiHeat.</p>'
-                '<img src="{}" alt="Trulli" width="500" height="333">'
+                '<img src="{}" alt="Plot" width="500" height="333">'
                 '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name, plot_path)
                 , 'html'))
             text = message.as_string()
