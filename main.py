@@ -7,6 +7,7 @@ from ControlData import ControlData
 measure_process = True
 start_day = dt.date.today()
 
+# init of classes
 measure_controller = ControlMea()
 
 data_controller = ControlData()
