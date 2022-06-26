@@ -22,8 +22,8 @@ while measure_process:
     data_controller.set_datapoint(temp_lst)
 
     # temp control structure
-    if crit_sensors_data:
-        measure_controller.warn_temp(crit_sensors_data[3])
+    if crit_sensors_data[0]:
+        measure_controller.warn_temp(crit_sensors_data[2])
         measure_process = False
         pass
 
