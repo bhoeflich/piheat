@@ -25,7 +25,6 @@ while measure_process:
     if crit_sensors_data[0]:
         measure_controller.warn_temp(crit_sensors_data[2])
         measure_process = False
-        pass
 
     actual_day = dt.date.today()
 

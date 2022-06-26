@@ -2,6 +2,7 @@ import constants as CON
 import smtplib
 import re
 import datetime as dt
+import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -15,10 +16,11 @@ class ControlNotify:
         self.smtp_port = CON.SMTP_PORT
         self.report_subject = 'Temperature Report {}'.format(dt.datetime.now().replace(microsecond=0))
         self.warning_subject = 'WARNING! Temperature Alert {}'.format(dt.datetime.now().replace(microsecond=0))
-        self.email_recipients = {'Julian Katz': 'julian.katz@haw-hamburg.de',
+        self.email_recipients = {'Lennard Rüdiger Voigt': 'lennardvoigt@hotmail.com',
+                                 'Julian Katz': 'julian.katz@haw-hamburg.de',
                                  'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de',
-                                 'Lennard Rüdiger Voigt': 'lennardvoigt@hotmail.com'}
+                                 }
 
     def update_contacts(self):
         # get new mail addresses
@@ -52,11 +54,12 @@ class ControlNotify:
             message.attach(MIMEText(
                 '<p>Hallo {},</p>'
                 '<p>hier ist der monatliche Bericht deines PiHeat.</p>'
-                '<img src="{}" alt="Trulli" width="500" height="333">'
+                '<img src="{}" alt="Plot" width="500" height="333">'
                 '<p>Hab einen sch&ouml;nen Tag (:</p>'.format(name, plot_path)
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)
+            time.sleep(5)
         # All emails sent, log out.
         server.quit()
 
@@ -85,5 +88,6 @@ class ControlNotify:
                 , 'html'))
             text = message.as_string()
             server.sendmail(self.sender_account, self.email_recipients[name], text)
+            time.sleep(5)
         # All emails sent, log out.
         server.quit()
