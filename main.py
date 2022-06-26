@@ -5,7 +5,7 @@ from ControlMea import ControlMea
 from ControlData import ControlData
 
 measure_process = True
-start_day = dt.date.today()
+start_day = dt.datetime.now()
 
 # init of classes
 measure_controller = ControlMea()
@@ -27,9 +27,9 @@ while measure_process:
         measure_process = False
 
 
-    actual_day = dt.date.today()
+    actual_day = dt.datetime.now()
 
-    if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
+    if actual_day - start_day >= dt.timedelta(seconds=measure_controller.report_interval):
 
         plot_path = data_controller.create_plot(measure_controller.max_temp)
         measure_controller.report_temp(plot_path)
