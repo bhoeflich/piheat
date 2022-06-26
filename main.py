@@ -5,7 +5,7 @@ from ControlMea import ControlMea
 from ControlData import ControlData
 
 measure_process = True
-start_day = dt.date.today()
+start_day = dt.datetime.now()
 
 # init of classes
 measure_controller = ControlMea()
@@ -22,14 +22,14 @@ while measure_process:
     data_controller.set_datapoint(temp_lst)
 
     # temp control structure
-    if crit_sensors_data:
-        measure_controller.warn_temp(crit_sensors_data[3])
+    if crit_sensors_data[0]:
+        measure_controller.warn_temp(crit_sensors_data[2])
         measure_process = False
-        pass
 
-    actual_day = dt.date.today()
 
-    if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
+    actual_day = dt.datetime.now()
+
+    if actual_day - start_day >= dt.timedelta(seconds=measure_controller.report_interval):
 
         plot_path = data_controller.create_plot(measure_controller.max_temp)
         measure_controller.report_temp(plot_path)

@@ -19,9 +19,9 @@ class ControlData:
     def __init__(self):
         self.__filepath = 'data/'
         # self.filename = 'temp-data-' + str(dt.date.today()) + '.csv'
-        self.csv_path = self.__filepath + 'temp-data-' + str(dt.date.today()) + '.csv'
+        self.csv_path = self.__filepath + 'temp-data-' + str(dt.datetime.now()) + '.csv'
 
-        self.plot_path = 'plots/report_plot-' + str(dt.date.today())
+        self.plot_path = 'plots/report_plot-' + str(dt.date.today()) + '.png'
 
     def new_file(self):
         self.csv_path = self.__filepath + 'temp-data-' + str(dt.datetime.now()) + '.csv'
@@ -58,4 +58,3 @@ class ControlData:
         plot_path = self.plot_path
         return plot_path
 
-test = ControlData().create_plot(100)
