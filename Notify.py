@@ -22,7 +22,7 @@ class Notify:
     def update_contacts(self):
         # get new mail addresses
         raw_input = input('Enter email to receive notifications: \n'
-                          '(separate different addresses with a ";" \n'
+                          '(separate different addresses with a ";") \n'
                           '\n')
         contact_list = raw_input.replace(" ", "").split(';')
         # check if mail
@@ -85,8 +85,3 @@ class Notify:
             server.sendmail(self.sender_account, self.email_recipients[name], text)
         # All emails sent, log out.
         server.quit()
-
-fake_temp = '9001'
-N = Notify()
-N.send_warning(fake_temp)
-N.send_report()
