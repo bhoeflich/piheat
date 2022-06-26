@@ -5,9 +5,9 @@ import datetime as dt
 # SYSTEM CONSTANTS
 
 # Path of Sensor Data
-SENSOR_PATHS = ('/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w1_slave.txt',
-                '/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w2_slave.txt',
-                '/Users/bjoernhoefer/Desktop/SOM/piheat/test_files/w3_slave.txt'
+SENSOR_PATHS = ('/sys/bus/w1/devices/28-1de3851e64ff/w1_slave',
+                '/sys/bus/w1/devices/28-1de3851e64ff/w1_slave',
+                '/sys/bus/w1/devices/28-1de3851e64ff/w1_slave'
                 )
 
 # ControlMea

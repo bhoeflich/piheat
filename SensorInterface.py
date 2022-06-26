@@ -18,7 +18,7 @@ class SensorInterface:
         return raw_string
 
     def get_temperatures(self) -> list:
-        temp_lst = [12.000, 13.000]
+        temp_lst = []
 
         for string in self.get_content():
             temp_str = string.split('\n')[1].split(' ')[9]
