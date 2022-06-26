@@ -13,7 +13,7 @@ class ControlMea:
         self.report_interval = CON.REP_INTERVAL
 
         self.interface = SensorInterface()
-        self. notifier = ControlNotify()
+        self.notifier = ControlNotify()
 
     def __str__(self):
         return f'[interv:{self.interval}\namt senors:{self.sensors}\nmax temp:{self.max_temp}' \

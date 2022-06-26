@@ -17,7 +17,8 @@ class ControlNotify:
         self.warning_subject = 'WARNING! Temperature Alert {}'.format(dt.datetime.now().replace(microsecond=0))
         self.email_recipients = {'Julian Katz': 'julian.katz@haw-hamburg.de',
                                  'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
-                                 'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de'}
+                                 'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de',
+                                 'Lennard Rüdiger Voigt': 'lennardvoigt@hotmail.com'}
 
     def update_contacts(self):
         # get new mail addresses

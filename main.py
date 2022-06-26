@@ -24,14 +24,14 @@ while measure_process:
 
     # temp control structure
     if crit_sensors_data:
-        # measure_controller.warn_temp()
+        measure_controller.warn_temp()
         measure_process = False
         pass
 
     actual_day = dt.date.today()
 
     if actual_day - start_day >= dt.timedelta(day=measure_controller.report_interval):
-        # measure_controller.report_temp()
+        measure_controller.report_temp()
         start_day = actual_day
         pass
 
