@@ -58,4 +58,3 @@ class ControlData:
         plot_path = self.plot_path
         return plot_path
 
-test = ControlData().create_plot(100)
