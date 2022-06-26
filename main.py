@@ -29,9 +29,8 @@ while measure_process:
 
     actual_day = dt.date.today()
 
-    if actual_day - start_day >= dt.timedelta(day=measure_controller.report_interval):
-        plot_path = data_controller.create_plot()
-        measure_controller.report_temp(plot_path)
+    if actual_day - start_day >= dt.timedelta(days=measure_controller.report_interval):
+        measure_controller.report_temp(data_controller.create_plot())
         start_day = actual_day
         pass
 
