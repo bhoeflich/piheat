@@ -22,7 +22,7 @@ class ControlNotify:
                                  #'Julian Katz': 'julian.katz@haw-hamburg.de',
                                  'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de',
-                                 #'Prof. Wiesemann': 'stefan.wiesemann@haw-hamburg.de'
+                                 'Prof. Dr. Wiesemann': 'stefan.wiesemann@haw-hamburg.de'
                                  }
 
     def update_contacts(self):
@@ -84,10 +84,10 @@ class ControlNotify:
                 '<p><b>!!! WARNUNG !!!</b></p>'\
                 '<p>Hallo {},</p>'\
                 '<p></p>'\
-                '<p><strong>deine Kacke ist grade so richtig am dampfen!</strong></p>'\
+                '<p><strong>dein Hausstromspeicher ist kurz davor zu überhitzen!</strong></p>'\
                 '<p>Wir haben eine zu hohe Temperatur ({} C°) festgestellt</p>'\
                 '<p></p>'\
-                '<p>Bitte überprüfe <b>sofort</b> deinen Stuhl</p>'\
+                '<p>Bitte überprüfe <b>sofort</b> die Anlage!</p>'\
                 '<p></p>'\
                 '<p>Sch&ouml;nen Tag (:</p>'.format(name, critical_temp)
                 , 'html'))
