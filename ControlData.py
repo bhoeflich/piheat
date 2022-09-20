@@ -53,7 +53,7 @@ class ControlData:
         ax.set_title('Temperaturen des letzten Intervalls', size=20)
         ax.set_ylabel('Temperatur [°C]', size=15)
         # ax.set_xlabel('Zeit', size=15 )
-        fig.show()
+        # fig.show()
         fig.savefig(self.plot_path)
 
         plot_path = self.plot_path

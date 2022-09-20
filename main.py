@@ -16,7 +16,7 @@ data_controller.initialize_csv()
 while measure_process:
     temp_lst = measure_controller.get_temp()
     crit_sensors_data = measure_controller.check_temp(temp_lst)
-    print(temp_lst)
+    print(temp_lst[1])
     print(crit_sensors_data)
 
     data_controller.set_datapoint(temp_lst)
