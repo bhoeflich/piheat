@@ -12,7 +12,6 @@ class ControlMea:
         self.max_temp = CON.MAX_TEMP
         self.report_interval = CON.REP_INTERVAL
 
-        # self.plot_rows = ((self.report_interval * 24 * 3600)/self.interval)-1
 
         self.interface = SensorInterface()
         self.notifier = ControlNotify()

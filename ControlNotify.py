@@ -22,6 +22,7 @@ class ControlNotify:
                                  #'Julian Katz': 'julian.katz@haw-hamburg.de',
                                  'Maximilian Groening': 'maximilian.groening@haw-hamburg.de',
                                  'Bjoern Hoefer': 'bjoern.hoefer@haw-hamburg.de',
+                                 #'Prof. Wiesemann': 'stefan.wiesemann@haw-hamburg.de'
                                  }
 
     def update_contacts(self):
